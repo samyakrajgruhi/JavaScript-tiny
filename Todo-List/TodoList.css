@@ -1,0 +1,65 @@
+body{
+    font-family: Roboto,Arial;
+    padding-left:500px;
+}
+
+input{
+    padding: 7px 15px;
+    border:solid;
+    border-width:1px;
+}
+
+.heading{
+    font-size: x-large;
+    font-weight: bold;
+    margin-left:150px;
+}
+
+.input-section{
+    width:425px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display:flex;
+
+
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.add-button{
+    padding: 8px 20px;
+    border:none;
+    background-color: green;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.delete-button{
+    padding:6px 15px;
+    border:none;
+    background-color: red;
+    color:white;
+    font-size: medium;
+    cursor: pointer;
+}
+
+span{
+    margin-left:20px;
+    font-size:120%;
+}
+
+
+.js-todo-display{
+    width:425px;
+}
+
+
+.todo-div{
+    margin-bottom:10px;
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+}
+

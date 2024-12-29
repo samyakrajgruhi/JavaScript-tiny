@@ -1,0 +1,46 @@
+body{
+    font-family: Roboto,Arial;
+    background-color: rgb(25,25,25);
+    color:white;
+}
+
+button{
+    cursor: pointer;
+}
+
+.button-icon{
+    background-color: rgb(25,25,25);
+    color: white;
+    border:solid;
+    border-color: white;
+    border-width: 2px;
+    align-items: center;
+    object-fit:fill;
+    padding:15px;
+    border-radius: 50px;
+    margin:10px;
+}
+
+.reset-button{
+    padding:10px 15px;
+    border:none;
+}
+
+img{
+    height: 50px;
+}
+
+.heading{
+    font-size:200%;
+    font-weight: bold;
+}
+
+.result{
+    font-size:150%;
+    font-weight: bold;
+}
+
+.score{
+    margin-top:20px;
+    font-size:100%;
+}

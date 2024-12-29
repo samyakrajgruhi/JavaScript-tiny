@@ -21,7 +21,7 @@ button{
     margin:10px;
 }
 
-.reset-button{
+.reset-button, .auto-play{
     padding:10px 15px;
     border:none;
 }

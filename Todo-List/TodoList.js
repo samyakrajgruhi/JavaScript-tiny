@@ -4,9 +4,13 @@ if(todoList != []){
     display();
 }
 
+// Function to save in Local Storage to prevent reseting on page refresh //
+
 function saveToStorage(){
     localStorage.setItem('todoList',JSON.stringify(todoList));
 }
+
+// Function To Add Tasks in Todo List //
 
 function addToList(){
     const todo = document.querySelector('.js-input').value;
@@ -26,23 +30,25 @@ function addToList(){
     document.querySelector('.js-input').value = '';
 }
 
+// Function to Display the TodoCurrent TodoList //
+
 function display(){
-    const todoListHTML = '';
-    for(let i=0; i<todoList.length; i++){
-        const todoObject = todoList[i]
+    let todoListHTML = '';
+    todoList.forEach(function(todoObject,index){
         const {todo,dueDate} = todoObject;
         const html = 
         `<div class="todo-div">
             <span>${todo}</span> 
             <span>${dueDate}</span>
             <button class="delete-button" onclick="
-                todoList.splice(${i},1);
+                todoList.splice(${index},1);
                 display();
                 saveToStorage();
             ">Delete</button>
         </div>`;
         todoListHTML += html;
-    }
+    });
+
     document.querySelector('.js-todo-display').innerHTML = todoListHTML;
 }
 

@@ -20,7 +20,7 @@ document.querySelector('.js-scissors-button').addEventListener('click',()=>{
     playGame('scissors');
 });
 
-// Play Game with KeyBoard [r = rock, p = paper, s = scissors] //
+// Play Game with KeyBoard [r = rock, p = paper, s = scissors, a = autoplay, Backspace = reset score] //
  
 document.body.addEventListener('keydown',(event)=>{
     if(event.key === 'r'){
@@ -29,8 +29,12 @@ document.body.addEventListener('keydown',(event)=>{
         playGame('paper');
     } else if(event.key === 's'){
         playGame('scissors');
+    } else if(event.key === 'a'){
+        autoPlay();
+    } else if(event.key === 'Backspace'){
+        resetScore();
     }
-})
+});
 
 // Function to Update Score Display
 
@@ -112,14 +116,35 @@ function pickComputerMove() {
     return computerMove;
 }
 
+// Function for resetting the score //
+
+function resetScore(){
+    document.querySelector('.js-confirm-reset').innerHTML = `
+    Are you sure you want to reset the score ?
+    <button class="reset-confirm">Yes</button> 
+    <button class="reset-cancel">No</button>`;
+    
+// Event Listener for Confirm Reset(Yes) button //
+    document.querySelector('.reset-confirm').addEventListener('click',()=>{
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        updateScoreElement();
+        localStorage.removeItem('score');
+        document.querySelector('.js-confirm-reset').innerHTML = '';
+    })
+
+// Event listener for Cancel Reset(No) button //
+    document.querySelector('.reset-cancel').addEventListener('click',()=>{
+        document.querySelector('.js-confirm-reset').innerHTML = '';
+    })
+    
+}
+
 // Replaced onclick with addEventListener for auto play and Reset Score buttons //
 
 document.querySelector('.reset-button').addEventListener('click',()=>{
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    updateScoreElement();
-    localStorage.removeItem('score');
+    resetScore();
 });
 
 

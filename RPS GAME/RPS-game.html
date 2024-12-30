@@ -10,17 +10,11 @@
     </head>
     <body>
         <p class="heading">Rock Paper Scissors</p>
-        <button class="button-icon" onclick="
-        playGame('rock');
-        "><img src="/RPS GAME/images/rock-emoji.png"></button>
+        <button class="button-icon js-rock-button"><img src="/RPS GAME/images/rock-emoji.png"></button>
 
-        <button class="button-icon" onclick="
-        playGame('paper');
-        "><img src="/RPS GAME/images/paper-emoji.png"></button>
+        <button class="button-icon js-paper-button"><img src="/RPS GAME/images/paper-emoji.png"></button>
 
-        <button class="button-icon" onclick="
-        playGame('scissors');
-        "><img src="/RPS GAME/images/scissors-emoji.png"></button>
+        <button class="button-icon js-scissors-button"><img src="/RPS GAME/images/scissors-emoji.png"></button>
 
         <p class="js-result result"></p>
 
@@ -28,15 +22,9 @@
 
         <p class="js-score score"></p>
 
-        <button class="reset-button" onclick="
-            score.wins = 0;
-            score.losses = 0;
-            score.ties = 0;
-            updateScoreElement();
-            localStorage.removeItem('score');
-        ">Reset Score</button>
+        <button class="reset-button">Reset Score</button>
 
-        <button class="auto-play" onclick="autoPlay();">Start AutoPlay</button>
+        <button class="auto-play">Start AutoPlay</button>
 
         <script src="RPS-game.js">
             

@@ -6,6 +6,32 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     ties: 0
 };
 
+// Replaced onclick with addEventListener to the buttons for choice buttons(rock,paper,scissors) //
+
+document.querySelector('.js-rock-button').addEventListener('click',()=>{
+    playGame('rock');
+});
+
+document.querySelector('.js-paper-button').addEventListener('click',()=>{
+    playGame('paper');
+});
+
+document.querySelector('.js-scissors-button').addEventListener('click',()=>{
+    playGame('scissors');
+});
+
+// Play Game with KeyBoard [r = rock, p = paper, s = scissors] //
+ 
+document.body.addEventListener('keydown',(event)=>{
+    if(event.key === 'r'){
+        playGame('rock');
+    } else if(event.key === 'p'){
+        playGame('paper');
+    } else if(event.key === 's'){
+        playGame('scissors');
+    }
+})
+
 // Function to Update Score Display
 
 updateScoreElement();
@@ -22,7 +48,7 @@ function playGame(playerMove) {
     let result = '';
     document.querySelector('.js-result').innerHTML = result;
 
-if (playerMove === 'scissors') {
+    if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
             result = 'You lose.';
         } else if (computerMove === 'paper') {
@@ -86,6 +112,21 @@ function pickComputerMove() {
     return computerMove;
 }
 
+// Replaced onclick with addEventListener for auto play and Reset Score buttons //
+
+document.querySelector('.reset-button').addEventListener('click',()=>{
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    updateScoreElement();
+    localStorage.removeItem('score');
+});
+
+
+document.querySelector('.auto-play').addEventListener('click',()=>{
+    autoPlay();
+});
+
 
 // Function For Auto-Play // 
 
@@ -94,7 +135,7 @@ let intervalID;
 
 function autoPlay(){
     if(!isAutoPlaying){
-        intervalID = setInterval(function(){
+        intervalID = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove);
         },1000);
@@ -105,6 +146,4 @@ function autoPlay(){
         isAutoPlaying = false;
         document.querySelector('.auto-play').innerHTML = 'Start AutoPlay';
     }
-    
-
 }

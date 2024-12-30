@@ -10,6 +10,11 @@ function saveToStorage(){
     localStorage.setItem('todoList',JSON.stringify(todoList));
 }
 
+// Added addEventListener to Add button //
+document.querySelector('.add-button').addEventListener('click',()=>{
+    addToList();
+})
+
 // Function To Add Tasks in Todo List //
 
 function addToList(){
@@ -51,6 +56,15 @@ function display(){
 
     document.querySelector('.js-todo-display').innerHTML = todoListHTML;
 }
+
+
+// Added addEventListener to Delete button //
+
+document.querySelector('.delete-button').addEventListener('click',()=>{
+    todoList.splice(index,1);
+    display();
+    saveToStorage();
+})
 
 
 

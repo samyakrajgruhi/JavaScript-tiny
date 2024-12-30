@@ -10,11 +10,6 @@ function saveToStorage(){
     localStorage.setItem('todoList',JSON.stringify(todoList));
 }
 
-// Added addEventListener to Add button //
-document.querySelector('.add-button').addEventListener('click',()=>{
-    addToList();
-})
-
 // Function To Add Tasks in Todo List //
 
 function addToList(){
@@ -35,6 +30,12 @@ function addToList(){
     document.querySelector('.js-input').value = '';
 }
 
+// Added addEventListener to Add button //
+
+document.querySelector('.add-button').addEventListener('click',()=>{
+    addToList();
+});
+
 // Function to Display the TodoCurrent TodoList //
 
 function display(){
@@ -45,27 +46,28 @@ function display(){
         `<div class="todo-div">
             <span>${todo}</span> 
             <span>${dueDate}</span>
-            <button class="delete-button" onclick="
-                todoList.splice(${index},1);
-                display();
-                saveToStorage();
-            ">Delete</button>
+            <button class="delete-button">Delete</button>
         </div>`;
         todoListHTML += html;
     });
 
     document.querySelector('.js-todo-display').innerHTML = todoListHTML;
+
+// Replaced onclick with addEventListener for delete button //
+
+    document.querySelectorAll('.delete-button').forEach((deleteButton, index)=>{
+        deleteButton.addEventListener('click',()=>{
+            todoList.splice(index,1);
+            display();
+            saveToStorage();
+        })
+    })
 }
 
+// Event listener for Enter(Pressing enter adds the item to list) //
 
-// Added addEventListener to Delete button //
-
-document.querySelector('.delete-button').addEventListener('click',()=>{
-    todoList.splice(index,1);
-    display();
-    saveToStorage();
+document.body.addEventListener('keydown',(event)=>{
+    if(event.key === 'Enter'){
+        addToList();
+    }
 })
-
-
-
-
